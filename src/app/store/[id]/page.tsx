@@ -1,9 +1,11 @@
+import AddTocart from '@/app/components/AddTocart';
 import Container from '@/app/components/Container';
 import { IGetProduct } from '@/app/typescript/product';
+import { formatPrice } from '@/utils/number';
 import React from 'react'
 
 interface IProductProps {
-    params: Promise<{ id: string }>;
+    params: Promise<{ id: number }>;
     searchParams: Promise<object>;
 }
 
@@ -16,18 +18,12 @@ async function Product({ params }: IProductProps) {
     return (
         <Container>
             <div className='grid grid-cols-12 mt-8 shadow-md'>
-                <div className='col-end-3'>
-                    <img className='' src={data.image} alt="" />
-                </div>
+                <img className='col-end-3' src={data.image} alt={data.title} />
                 <div className='col-span-9 p-4'>
                     <h2 className='font-bold text-xl'>{data.title}</h2>
                     <p className='text-gray-600'>{data.description}</p>
-                    <p className='font-bold'>قیمت:<span>{data.price}$</span></p>
-                    <div className='mt-4'>
-                        <button className='px-4 py-2 rounded-2xl bg-sky-500 text-white'>+</button>
-                        <span className='mx-4'>3</span>
-                        <button className='px-4 py-2 rounded-2xl bg-sky-500 text-white'>-</button>
-                    </div>
+                    <p className='font-bold'>قیمت:<span>{formatPrice(data.price ?? 0)}$</span></p>
+                    <AddTocart id={id} />
                 </div>
             </div>
         </Container>

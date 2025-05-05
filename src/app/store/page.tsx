@@ -4,7 +4,7 @@ import Container from '../components/Container'
 function Store() {
   return (
     <Container>
-        Store
+      Store
     </Container>
   )
 }

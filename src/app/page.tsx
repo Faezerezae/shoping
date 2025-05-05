@@ -9,10 +9,10 @@ async function Home() {
     // cache: "no-cache"
     //درخواست بعدی بعد از 10 تانیه دیگه ارسال میشه
     next: {
-        revalidate: 1
+      revalidate: 1
     }
-});
-const data = await result.json();
+  });
+  const data = await result.json();
   return (
     <Container>
       <h1 className='text-white py-4'>خانه</h1>

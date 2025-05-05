@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import "./globals.css";
-import MainLayout from "./components/MainLayout";
+import MainLayoutContext from "./context/MainLayoutContext";
 
 
 export const metadata: Metadata = {
@@ -17,9 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        <MainLayout>
+        <MainLayoutContext>
           {children}
-        </MainLayout>
+        </MainLayoutContext>
       </body>
     </html>
   );
