@@ -18,6 +18,10 @@ function Navbar() {
       title: "فروشگاه",
       href: "/store"
     },
+    {
+      title: "داشبورد",
+      href: "/dashboard"
+    },
   ]
   return (
     <div className='p-4 border-b-2'>

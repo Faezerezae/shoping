@@ -8,9 +8,9 @@ async function Home() {
   const result = await fetch("http://localhost:8001/products", {
     // cache: "no-cache"
     //درخواست بعدی بعد از 10 تانیه دیگه ارسال میشه
-    next: {
-      revalidate: 1
-    }
+    // next: {
+    //   revalidate: 1
+    // }
   });
   const data = await result.json();
   return (

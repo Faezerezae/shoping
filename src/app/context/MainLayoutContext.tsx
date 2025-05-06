@@ -1,6 +1,6 @@
 "use client"
 import { CartItems, ShoppingCartContext } from '@/app/context/ShoppingCartContext';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 
 interface IMainLayoutContextProps {
@@ -9,7 +9,6 @@ interface IMainLayoutContextProps {
 
 function MainLayoutContext({ children }: IMainLayoutContextProps) {
   const [cartItems, setCartItems] = useState<CartItems[]>([]);
-
 
   const cartTotalQty = cartItems.reduce((totalQty, item) => {
     return totalQty + item.qty;
@@ -59,6 +58,19 @@ function MainLayoutContext({ children }: IMainLayoutContextProps) {
       return currentItem.filter(item => item.id != id)
     })
   }
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems))
+    }
+  }, [])
+
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+  }, [cartItems])
+
 
   return (
     <ShoppingCartContext.Provider value={{ cartItems, handleIncreaseProductQty, getProductQty, cartTotalQty, handleDecreaseProductQty, handleRemoveProductToCart }}>
