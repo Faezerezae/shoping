@@ -2,6 +2,7 @@ import { BiEdit, BiTrash } from 'react-icons/bi'
 import React from 'react'
 import { IGetProduct } from '@/app/typescript/product'
 import { formatPrice } from '@/utils/number'
+import Image from 'next/image'
 
 type Props = IGetProduct & {
     onEdit: () => void
@@ -11,7 +12,14 @@ type Props = IGetProduct & {
 function ManageProduct({ title, price, image, onEdit, onDelete }: Props) {
     return (
         <div className="shadow-md rounded-lg overflow-hidden border border-gray-200 bg-white">
-            <img src={image} alt={title} className="w-full h-48 object-cover" />
+            <div className="relative w-auto h-[120px] col-end-2">
+                <Image
+                    src={image}
+                    alt={title || 'Product'}
+                    fill
+                    className="object-cover"
+                />
+            </div>
             <div className="p-4">
                 <h3 className="font-semibold text-lg mb-2">{title}</h3>
                 <p className="text-gray-700 mb-4">

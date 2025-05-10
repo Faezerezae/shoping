@@ -27,16 +27,18 @@ async function Store({ searchParams }: IStoreProps) {
   const data = await result.json() as IProductList;
   return (
     <Container>
-      <h1 className='text-white py-4'>فروشگاه</h1>
-      <Search/>
-      <div className='grid grid-cols-4 gap-4'>
-        {data.data.map((item: IGetProduct) => (
-          <Link href={`/store/${item.id}`} key={item.id}>
-            <Product {...item} />
-          </Link>
-        ))}
+      <div className="p-4">
+        <h1 className='text-white py-4'>فروشگاه</h1>
+        <Search/>
+        <div className='grid grid-cols-4 gap-4'>
+          {data.data.map((item: IGetProduct) => (
+            <Link href={`/store/${item.id}`} key={item.id}>
+              <Product {...item} />
+            </Link>
+          ))}
+        </div>
+        <Pagination pageCount={data.pages}/>
       </div>
-      <Pagination pageCount={data.pages}/>
     </Container>
   )
 }

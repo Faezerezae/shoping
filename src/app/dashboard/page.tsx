@@ -69,24 +69,25 @@ function Dashboard() {
 
     return (
         <Container>
-            <div className="text-right my-8">
-                <button
-                    onClick={handleAddClick}
-                    className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                >
-                    افزودن محصول جدید
-                </button>
-            </div>
-
-            <div className='grid grid-cols-4 gap-4'>
-                {products.map((item: IGetProduct) => (
-                    <ManageProduct
-                        key={item.id}
-                        {...item}
-                        onEdit={() => handleEditClick(item)}
-                        onDelete={() => handleDeleteClick(item)}
-                    />
-                ))}
+            <div className="p-4">
+                <div className="text-right my-8">
+                    <button
+                        onClick={handleAddClick}
+                        className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                        افزودن محصول جدید
+                    </button>
+                </div>
+                <div className='grid grid-cols-4 gap-4'>
+                    {products.map((item: IGetProduct) => (
+                        <ManageProduct
+                            key={item.id}
+                            {...item}
+                            onEdit={() => handleEditClick(item)}
+                            onDelete={() => handleDeleteClick(item)}
+                        />
+                    ))}
+                </div>
             </div>
 
             <ProductModal

@@ -37,26 +37,26 @@ function Cart() {
     }
     return (
         <Container>
-            <h1 className='my-4'>سبد خرید</h1>
-
-            <div className="">
-                {cartItems.map((item) => (
-                    <CartItem {...item} key={item.id} />
-                ))}
-            </div>
-            <div className="shadow-2xl p-4 rounded-2xl mx-auto my-4">
-                <h3 className='font-bold'>
-                    قیمت کل:
-                    <span>
-                        {formatPrice(totalPrice)}$
-                    </span>
-                </h3>
-
-                <h3 className='font-bold'>سود شما از این خرید:<span>{formatPrice(discountPrice)}$</span></h3>
-                <h3 className='font-bold'>قیمت نهایی:<span>{formatPrice(finalPrice)}$</span></h3>
-                <div>
-                    <input className='border' type="text" placeholder='کد تخفیف خود را وارد کنید' onChange={(e) => setDiscountCode(e.target.value)} />
-                    <button className='bg-sky-400 rounded p-2 mx-2' onClick={handleSubmitDiscount}>اعمال</button>
+            <div className="p-4">
+                <h1 className='my-4'>سبد خرید</h1>
+                <div className="">
+                    {cartItems.map((item) => (
+                        <CartItem {...item} key={item.id} />
+                    ))}
+                </div>
+                <div className="shadow-2xl p-4 rounded-2xl mx-auto my-4">
+                    <h3 className='font-bold'>
+                        قیمت کل:
+                        <span>
+                            {formatPrice(totalPrice)}$
+                        </span>
+                    </h3>
+                    <h3 className='font-bold'>سود شما از این خرید:<span>{formatPrice(discountPrice)}$</span></h3>
+                    <h3 className='font-bold'>قیمت نهایی:<span>{formatPrice(finalPrice)}$</span></h3>
+                    <div>
+                        <input className='border' type="text" placeholder='کد تخفیف خود را وارد کنید' onChange={(e) => setDiscountCode(e.target.value)} />
+                        <button className='bg-sky-400 rounded p-2 mx-2' onClick={handleSubmitDiscount}>اعمال</button>
+                    </div>
                 </div>
             </div>
         </Container>
